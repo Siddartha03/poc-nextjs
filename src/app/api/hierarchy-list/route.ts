@@ -66,7 +66,7 @@ export async function POST(request: Request) {
     return NextResponse.json({ error: "Family ID and Process ID are required" }, { status: 400 });
   }
 
-  // Simulate different hierarchy trees based on selections
+  // Simulate different heirarchy trees based on selections
   const hierarchyData = generateHierarchyTree(familyId, processId);
 
   // Add a small delay to simulate network request

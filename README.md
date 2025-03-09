@@ -15,7 +15,7 @@ Client Components:
 Three client components as requested:
 
 FamilyProcessSelection: Displays two dropdowns for family and process selection
-HierarchyList: Displays the hierarchy tree using Ant Design's Tree component
+HierarchyList: Displays the heirarchy tree using Ant Design's Tree component
 HierarchyContent: Displays detailed content for a selected node
 
 Data Flow:
@@ -39,7 +39,12 @@ With this implementation, the user flow works as follows:
 
 User selects a family from the first dropdown
 User selects a process from the second dropdown
-Upon process selection, a hierarchy tree is displayed
+Upon process selection, a heirarchy tree is displayed
 When the user clicks on a node in the tree, detailed content for that node is displayed
 
 All API calls happen on the server-side, ensuring they won't appear in the browser's network tab, fulfilling your security requirement.
+
+---
+
+Next.js Server Action communication mechanism.
+When you use Server Actions in Next.js 15 with React 19, the client component still needs to communicate with the server to execute those server actions. This communication appears in the network tab, but it's not your direct API calls - it's the Next.js framework's way of invoking server functions from the client.

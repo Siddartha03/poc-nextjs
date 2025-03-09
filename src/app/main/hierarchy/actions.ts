@@ -25,12 +25,9 @@ type HierarchyContent = {
 };
 
 export async function getFamilies(): Promise<Family[]> {
-  const response = await fetch(
-    `${process.env.NEXT_PUBLIC_API_URL || "http://localhost:3000"}/api/family`,
-    {
-      cache: "no-store",
-    }
-  );
+  const response = await fetch("http://localhost:3000/api/family", {
+    cache: "no-store",
+  });
 
   if (!response.ok) {
     throw new Error("Failed to fetch families");
@@ -41,12 +38,9 @@ export async function getFamilies(): Promise<Family[]> {
 }
 
 export async function getProcesses(): Promise<Process[]> {
-  const response = await fetch(
-    `${process.env.NEXT_PUBLIC_API_URL || "http://localhost:3000"}/api/process`,
-    {
-      cache: "no-store",
-    }
-  );
+  const response = await fetch("http://localhost:3000/api/process", {
+    cache: "no-store",
+  });
 
   if (!response.ok) {
     throw new Error("Failed to fetch processes");
@@ -59,17 +53,14 @@ export async function getHierarchyList(
   familyId: number,
   processId: number
 ): Promise<HierarchyNode> {
-  const response = await fetch(
-    `${process.env.NEXT_PUBLIC_API_URL || "http://localhost:3000"}/api/heirarchy-list`,
-    {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ familyId, processId }),
-      cache: "no-store",
-    }
-  );
+  const response = await fetch("http://localhost:3000/api/hierarchy-list", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({ familyId, processId }),
+    cache: "no-store",
+  });
 
   if (!response.ok) {
     throw new Error("Failed to fetch hierarchy list");
@@ -80,7 +71,7 @@ export async function getHierarchyList(
 
 export async function getHierarchyContent(id: string): Promise<HierarchyContent> {
   const response = await fetch(
-    `${process.env.NEXT_PUBLIC_API_URL || "http://localhost:3000"}/api/heirarchy-content`,
+    `${process.env.NEXT_PUBLIC_API_URL || "http://localhost:3000"}/api/hierarchy-content`,
     {
       method: "POST",
       headers: {

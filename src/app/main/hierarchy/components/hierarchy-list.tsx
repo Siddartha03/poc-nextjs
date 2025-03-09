@@ -17,7 +17,10 @@ type HierarchyListProps = {
   onNodeSelect: (id: string) => Promise<void>;
 };
 
-export default function HierarchyList({ hierarchyData, onNodeSelect }: HierarchyListProps) {
+export default function HierarchyList({
+  hierarchyData,
+  onNodeSelect,
+}: Readonly<HierarchyListProps>) {
   const [selectedNode, setSelectedNode] = useState<string | null>(null);
   const [isPending, startTransition] = useTransition();
 

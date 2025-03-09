@@ -1,6 +1,6 @@
 import React from "react";
 // import FamilyProcessSelection from "./family-process-selection";
-// import HierarchyList from "./hierarchy-list";
+// import HierarchyList from "./heirarchy-list";
 // import { Divider } from "antd";
 
 const HierarchyLayout = ({ children }: { children: React.ReactNode }) => {
