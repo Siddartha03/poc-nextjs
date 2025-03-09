@@ -1,36 +1,45 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+Architecture and Implementation Details
+Here's how this implementation works:
 
-## Getting Started
+Server Components and API Calls:
 
-First, run the development server:
+All API calls happen server-side in either:
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+The page component (for initial data)
+Server actions (for subsequent data fetching)
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+This ensures API calls are not visible in the browser network tab
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Client Components:
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Three client components as requested:
 
-## Learn More
+FamilyProcessSelection: Displays two dropdowns for family and process selection
+HierarchyList: Displays the hierarchy tree using Ant Design's Tree component
+HierarchyContent: Displays detailed content for a selected node
 
-To learn more about Next.js, take a look at the following resources:
+Data Flow:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Initial data (families and processes) is fetched server-side and passed to client components
+When selections are made, server actions are called
+React 19's useTransition hook is used for loading states
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Security:
 
-## Deploy on Vercel
+All API endpoints use POST method where appropriate with proper validation
+No query parameters or client-side API calls are used
+No state management libraries are used as requested
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+React 19 Features:
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Uses latest React 19 hooks including useTransition for loading states
+Uses the new React Server Components pattern
+
+With this implementation, the user flow works as follows:
+
+User selects a family from the first dropdown
+User selects a process from the second dropdown
+Upon process selection, a hierarchy tree is displayed
+When the user clicks on a node in the tree, detailed content for that node is displayed
+
+All API calls happen on the server-side, ensuring they won't appear in the browser's network tab, fulfilling your security requirement.
