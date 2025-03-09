@@ -15,7 +15,6 @@ const FamilyProcessSelection = () => {
   const fetchData = async () => {
     const res1 = await fetch("/api/family");
     const data1 = await res1.json();
-    console.log(data1);
 
     setData1(data1);
 
